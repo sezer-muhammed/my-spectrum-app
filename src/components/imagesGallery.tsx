@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Provider, defaultTheme, Flex, View, Heading, Text
+    Provider, defaultTheme, Flex, View
 } from '@adobe/react-spectrum';
 
 // Assuming images are in the public/images directory
@@ -105,7 +105,7 @@ export function ImagesGallery() {
 
     return (
         <Provider theme={defaultTheme} colorScheme="light">
-            <div className="cinema-bg">
+            <div style={{ margin: '24px 0' }}>
                 <Flex direction="column" gap="size-400" margin="size-400">
                     <View UNSAFE_className="masonry-gallery">
                         {sortedPhotos.map((src, index) => (
@@ -117,7 +117,6 @@ export function ImagesGallery() {
                                     onClick={() => handleImageClick(src)}
                                     style={{ cursor: 'pointer' }}
                                 />
-                                {/* Do not show caption in gallery, only in modal */}
                             </figure>
                         ))}
                     </View>
@@ -157,31 +156,12 @@ export function ImagesGallery() {
                     )}
                 </Flex>
             </div>
-            <footer className="main-footer">
-                <span>© {new Date().getFullYear()} Im Sezer Gallery</span>
-            </footer>
             <style>
                 {`
-                .main-footer {
-                    width: 100vw;
-                    background: #232326;
-                    color: #aaa;
-                    padding: 18px 0 18px 0;
-                    text-align: center;
-                    font-size: 1.1rem;
-                    font-weight: 400;
-                    letter-spacing: 0.02em;
-                    margin-top: 0;
-                }
-                .cinema-bg {
-                    min-height: 100vh;
-                    width: 100vw;
-                    background: #18191b;
-                }
                 .masonry-gallery {
                     column-count: 1;
                     column-gap: 16px;
-                    background: #232326;
+                    background: none;
                     padding: 16px 0;
                     border-radius: 12px;
                 }

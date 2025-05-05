@@ -18,6 +18,7 @@
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.5.3",
     "react-scripts": "5.0.1",
+    "react-vertical-timeline-component": "^3.5.3",
     "vega": "^6.1.2",
     "vega-embed": "^7.0.2",
     "vega-lite": "^6.1.0",

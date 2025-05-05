@@ -22,6 +22,7 @@ import {
 } from '@adobe/react-spectrum';
 import { useNavigate } from 'react-router-dom';
 import photoPlaceholders from './photoPlaceholders.ts';
+import { ImagesGallery } from './imagesGallery.tsx';
 
 
 /**
@@ -479,36 +480,9 @@ export default function PortfolioPage() {
           <Item key="photography">
             <Heading level={2} UNSAFE_className="text-white">Photography Gallery</Heading>
             <Divider marginY="size-200" />
-            <Flex gap="size-300" wrap justifyContent="center">
-              {randomPhotos.map((src, i) => (
-                <Image
-                  key={i}
-                  src={src}
-                  alt={`Gallery preview ${i + 1}`}
-                  objectFit="cover"
-                  objectPosition="center"
-                  width="size-3400"
-                  height="calc(1.25 * var(--spectrum-global-dimension-size-3400))"
-                  // 5:4 aspect ratio, crop center
-                  UNSAFE_style={{
-                    borderRadius: 16,
-                    boxShadow: '0 4px 24px rgba(0,0,0,0.8)',
-                    aspectRatio: '5 / 4',
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                  }}
-                />
-              ))}
-            </Flex>
-            <Flex justifyContent="center" marginTop="size-300">
-              <Button
-                variant="primary"
-                UNSAFE_className="text-2xl font-bold px-8 py-4"
-                onPress={() => navigate('/library')}
-              >
-                See Full Library
-              </Button>
-            </Flex>
+            {/* Embed the full gallery here */}
+            <ImagesGallery />
+            {/* Removed "See Full Library" button */}
           </Item>
 
           {/* ───────── CONTACT ───────── */}
