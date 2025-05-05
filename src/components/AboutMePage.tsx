@@ -63,92 +63,27 @@ const photoPlaceholders = [
     '/images/53-SZR02170.jpg',
 ];
 
-// Example metadata and captions for demonstration
-const photoMeta: Record<string, { caption: string; meta: { [key: string]: string } }> = {
-    '/images/1-SZR06477.jpg': {
-        caption: `A close-up portrait of a goose with striking blue eyes and a vibrant orange beak, eagerly reaching up to receive a piece of bread from a human hand. The image captures the intricate details of the goose's textured feathers and the serrated edges of its beak, while the soft, blurred background highlights the interaction and creates a sense of intimacy and anticipation. The composition emphasizes the connection between human and animal, showcasing both curiosity and trust in a natural setting.`,
-        meta: {
-            'Aperture': 'f/2.8',
-            'Camera': 'Canon EOS R6',
-            'Exposure': '1/800s',
-            'Focal Length': '135mm',
-            'ISO': '320',
-            'Lens': 'Canon RF 135mm F1.8L IS USM',
-            'Location': 'Istanbul, Turkey',
-            'Photographer': 'Im Sezer',
-            'Year': '2024'
-        }
-    },
-    '/images/2-SZR06176.jpg': {
-        caption: 'A seagull soaring high in the blue sky.',
-        meta: {
-            'ISO': '400',
-            'Aperture': 'f/8',
-            'Exposure': '1/1000s',
-            'Focal Length': '200mm'
-        }
-    },
-    '/images/3-SZR04626.jpg': {
-        caption: 'A delicate white flower in focus.',
-        meta: {
-            'ISO': '100',
-            'Aperture': 'f/2.8',
-            'Exposure': '1/250s',
-            'Focal Length': '50mm'
-        }
-    },
+// Example captions for demonstration
+const photoCaptions: Record<string, string> = {
+    '/images/1-SZR06477.jpg': `A close-up portrait of a goose with striking blue eyes and a vibrant orange beak, eagerly reaching up to receive a piece of bread from a human hand. The image captures the intricate details of the goose's textured feathers and the serrated edges of its beak, while the soft, blurred background highlights the interaction and creates a sense of intimacy and anticipation. The composition emphasizes the connection between human and animal, showcasing both curiosity and trust in a natural setting.`,
+    '/images/2-SZR06176.jpg': 'A seagull soaring high in the blue sky.',
+    '/images/3-SZR04626.jpg': 'A delicate white flower in focus.',
     // ...add more entries as needed...
 };
 
-// Shuffle function
-function shuffleArray<T>(array: T[]): T[] {
-    const arr = array.slice();
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-}
 
-// Format metadata as a clean table for better appearance
-function renderMeta(metaObj: { [key: string]: string }) {
-    const sortedKeys = Object.keys(metaObj).sort();
-    return `
-        <table class="meta-table">
-            <tbody>
-                ${sortedKeys.map(key =>
-                    `<tr>
-                        <td class="meta-key">${key}</td>
-                        <td class="meta-value">${metaObj[key]}</td>
-                    </tr>`
-                ).join('')}
-            </tbody>
-        </table>
-    `;
-}
 
 export function AboutMePage() {
+    // Modal state for image preview
     const [modalImg, setModalImg] = React.useState<string | null>(null);
     const [isClosing, setIsClosing] = React.useState(false);
-    const [imgMeta, setImgMeta] = React.useState<string>(''); // For dynamic metadata
-    // Always use the same alphabetical order for gallery
-    const sortedPhotos = React.useMemo(() => {
-        return [...photoPlaceholders].sort();
-    }, []);
+    const sortedPhotos = React.useMemo(() => [...photoPlaceholders].sort(), []);
+    const closeTimeout = React.useRef<NodeJS.Timeout | null>(null);
 
     // Handle fade-out animation
     React.useEffect(() => {
         if (!modalImg) setIsClosing(false);
     }, [modalImg]);
-
-    // Use a ref to keep the timeout and clear it if needed
-    const closeTimeout = React.useRef<NodeJS.Timeout | null>(null);
-
-    const handleCloseModal = () => {
-        setIsClosing(true);
-        // Wait for animation to finish before removing modal
-        closeTimeout.current = setTimeout(() => setModalImg(null), 200);
-    };
 
     // Clean up timeout if component unmounts or modal closes early
     React.useEffect(() => {
@@ -157,37 +92,11 @@ export function AboutMePage() {
         };
     }, []);
 
-    // Dynamically extract metadata when modalImg changes
-    React.useEffect(() => {
-        if (!modalImg) {
-            setImgMeta('');
-            return;
-        }
-        if (
-            Object.prototype.hasOwnProperty.call(photoMeta, modalImg) &&
-            photoMeta[modalImg]?.meta &&
-            photoMeta[modalImg]?.caption
-        ) {
-            setImgMeta(renderMeta(photoMeta[modalImg].meta));
-            return;
-        }
-        setImgMeta('');
-        const img = new window.Image();
-        img.src = modalImg;
-        img.onload = function () {
-            setImgMeta(renderMeta({ 'Dimensions': `${img.naturalWidth} x ${img.naturalHeight}` }));
-        };
-        img.onerror = function () {
-            setImgMeta('<div>No metadata available.</div>');
-        };
-    }, [modalImg]);
-
     // Helper to handle image/modal click
     const handleImageClick = (src: string) => {
         if (modalImg === src) {
-            // If already open, close on click
             setIsClosing(true);
-            setTimeout(() => setModalImg(null), 200);
+            closeTimeout.current = setTimeout(() => setModalImg(null), 200);
         } else {
             setModalImg(src);
             setIsClosing(false);
@@ -197,20 +106,19 @@ export function AboutMePage() {
     return (
         <Provider theme={defaultTheme} colorScheme="light">
             <div className="cinema-bg">
-                {/* Header */}
-                <header className="main-header">
-                    <h1>Gallery</h1>
-                </header>
                 <Flex direction="column" gap="size-400" margin="size-400">
                     <View UNSAFE_className="masonry-gallery">
                         {sortedPhotos.map((src, index) => (
-                            <img
-                                key={index}
-                                src={src}
-                                alt={`Photo ${index + 1}`}
-                                className="masonry-photo"
-                                onClick={() => handleImageClick(src)}
-                            />
+                            <figure key={index} className="gallery-figure">
+                                <img
+                                    src={src}
+                                    alt={photoCaptions[src] ? photoCaptions[src] : `Photo ${index + 1}`}
+                                    className="masonry-photo"
+                                    onClick={() => handleImageClick(src)}
+                                    style={{ cursor: 'pointer' }}
+                                />
+                                {/* Do not show caption in gallery, only in modal */}
+                            </figure>
                         ))}
                     </View>
                     {modalImg && (
@@ -227,48 +135,33 @@ export function AboutMePage() {
                                         className="modal-img"
                                     />
                                 </div>
-                                <View
-                                    backgroundColor="static-black"
-                                    borderRadius="large"
-                                    padding="size-300"
-                                    marginStart="size-300"
-                                    maxWidth="size-6000"
-                                    width="100%"
-                                    UNSAFE_style={{
-                                        color: "#eee",
-                                        fontSize: "1.1rem",
-                                        textAlign: "left",
-                                        boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
-                                        background: "rgba(24,25,27,0.92)"
-                                    }}
-                                >
-                                    <Text>
-                                        {photoMeta[modalImg]?.caption || 'Photo by Im Sezer'}
-                                    </Text>
-                                </View>
+                                {photoCaptions[modalImg] && (
+                                    <div
+                                        style={{
+                                            color: "#eee",
+                                            fontSize: "1.1rem",
+                                            textAlign: "left",
+                                            background: "rgba(24,25,27,0.92)",
+                                            borderRadius: "12px",
+                                            padding: "18px 24px",
+                                            marginLeft: "24px",
+                                            maxWidth: "420px",
+                                            minWidth: "220px"
+                                        }}
+                                    >
+                                        {photoCaptions[modalImg]}
+                                    </div>
+                                )}
                             </div>
                         </div>
                     )}
                 </Flex>
             </div>
-            {/* Footer */}
             <footer className="main-footer">
                 <span>© {new Date().getFullYear()} Im Sezer Gallery</span>
             </footer>
             <style>
                 {`
-                .main-header {
-                    width: 100vw;
-                    background: #232326;
-                    color: #fff;
-                    padding: 32px 0 16px 0;
-                    text-align: center;
-                    font-size: 2.2rem;
-                    font-weight: 700;
-                    letter-spacing: 0.04em;
-                    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-                    margin-bottom: 0;
-                }
                 .main-footer {
                     width: 100vw;
                     background: #232326;
@@ -302,9 +195,17 @@ export function AboutMePage() {
                         column-count: 4;
                     }
                 }
+                .gallery-figure {
+                    margin: 0 0 24px 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    background: none;
+                }
                 .masonry-photo {
                     width: 100%;
-                    margin-bottom: 16px;
+                    margin-bottom: 8px;
                     border-radius: 16px;
                     border: 2px solid #000;
                     display: block;
@@ -312,13 +213,20 @@ export function AboutMePage() {
                     box-sizing: border-box;
                     break-inside: avoid;
                     transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s;
-                    cursor: pointer;
+                }
+                .gallery-caption {
+                    color: #ccc;
+                    font-size: 1rem;
+                    text-align: center;
+                    margin: 0 0 8px 0;
+                    padding: 0 8px;
                 }
                 .masonry-photo:hover {
                     transform: scale(1.07);
                     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
                     z-index: 2;
                 }
+                /* Modal styles */
                 .modal-overlay {
                     position: fixed;
                     top: 0; left: 0; right: 0; bottom: 0;
