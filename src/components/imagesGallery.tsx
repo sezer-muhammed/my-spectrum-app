@@ -73,7 +73,7 @@ const photoCaptions: Record<string, string> = {
 
 
 
-export function AboutMePage() {
+export function ImagesGallery() {
     // Modal state for image preview
     const [modalImg, setModalImg] = React.useState<string | null>(null);
     const [isClosing, setIsClosing] = React.useState(false);

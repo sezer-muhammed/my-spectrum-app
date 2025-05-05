@@ -1,18 +1,19 @@
 import React from 'react';
 // ... other imports like ReactDOM if this is your entry point
 import { Provider, defaultTheme } from '@adobe/react-spectrum';
-import { AboutMePage } from './components/AboutMePage.tsx'; // Explicitly import the .tsx file
+import MainPage from './components/MainPage.tsx';
+import LibraryPage from './components/LibraryPage.tsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    // You might already have a Provider here. If so, just render AboutMePage inside it.
-    // If not, wrap your app content with Provider.
     <Provider theme={defaultTheme}>
-        {/* ... other application components like routing, headers, etc. */}
-
-        <AboutMePage />
-
-        {/* ... other application components */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/library" element={<LibraryPage />} />
+        </Routes>
+      </BrowserRouter>
     </Provider>
   );
 }
