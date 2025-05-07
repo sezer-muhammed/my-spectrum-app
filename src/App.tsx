@@ -3,6 +3,7 @@ import React from 'react';
 import { Provider, defaultTheme } from '@adobe/react-spectrum';
 import MainPage from './components/MainPage.tsx';
 import LibraryPage from './components/LibraryPage.tsx';
+import ContactPage from './components/Contact.tsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/library" element={<LibraryPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>

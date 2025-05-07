@@ -166,17 +166,26 @@ export default function PortfolioPage() {
           paddingRight: '2rem',
         }}
       >
-        <Heading
-          level={1}
-          UNSAFE_className="text-3xl font-bold"
-          UNSAFE_style={{
-            color: '#fff',
-            textShadow: '0 1px 4px #000',
-            margin: 0,
-          }}
+        <span
+          role="button"
+          tabIndex={0}
+          aria-label="Go to Home"
+          style={{ display: 'inline-block', cursor: 'pointer' }}
+          onClick={() => window.location.href = process.env.PUBLIC_URL + '/'}
+          onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') window.location.href = process.env.PUBLIC_URL + '/'; }}
         >
-          Muhammed Sezer
-        </Heading>
+          <Heading
+            level={1}
+            UNSAFE_className="text-3xl font-bold hover:text-blue-400 transition-colors"
+            UNSAFE_style={{
+              color: '#fff',
+              textShadow: '0 1px 4px #000',
+              margin: 0,
+            }}
+          >
+            Muhammed Sezer
+          </Heading>
+        </span>
         <Text
           UNSAFE_className="text-lg text-white"
           UNSAFE_style={{
@@ -271,9 +280,20 @@ export default function PortfolioPage() {
                       }}
                     />
                   </View>
-                  <Heading level={3} UNSAFE_className="text-gray-900 text-center">Muhammed Sezer</Heading>
+                  <View
+                    role="button"
+                    tabIndex={0}
+                    aria-label="Go to Home"
+                    onClick={() => window.location.href = process.env.PUBLIC_URL + '/'}
+                    onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') window.location.href = process.env.PUBLIC_URL + '/'; }}
+                    UNSAFE_style={{ display: 'inline-block', cursor: 'pointer' }}
+                  >
+                    <Heading level={3} UNSAFE_className="text-gray-900 text-center hover:text-blue-400 transition-colors">
+                      Muhammed Sezer
+                    </Heading>
+                  </View>
                   <Text UNSAFE_className="text-gray-700 text-center" fontSize="size-300">
-                    Istanbul, Turkey
+                    Pittsburgh, USA
                   </Text>
                   <Text UNSAFE_className="text-blue-700 text-center" fontSize="size-200" marginY="size-100">
                     "Building AI for real-world impact"
@@ -295,13 +315,14 @@ export default function PortfolioPage() {
                       YouTube
                     </ActionButton>
                   </Flex>
-                  <Button
-                    variant="cta"
-                    marginTop="size-200"
-                    onPress={() => window.open('mailto:muhammedsezer12@gmail.com')}
-                  >
-                    muhammedsezer12@gmail.com
-                  </Button>
+                  <Flex gap="size-200" justifyContent="center" marginTop="size-200">
+                    <Button
+                      variant="cta"
+                      onPress={() => window.open('mailto:muhammedsezer12@gmail.com')}
+                    >
+                      muhammedsezer12@gmail.com
+                    </Button>
+                  </Flex>
                   {/* Removed the "Open to Work" Badge Flex container */}
                 </Flex>
                 {/* Main Content */}
