@@ -208,7 +208,23 @@ export default function PortfolioPage() {
                     overflow="hidden"
                     position="relative"
                     borderRadius="medium"
-                    UNSAFE_style={{ borderRadius: '9999px' }}
+                    tabIndex={0}
+                    aria-label="Profile photo"
+                    UNSAFE_style={{
+                      borderRadius: 12,
+                      border: '4px solid #000',
+                      boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
+                      outline: 'none',
+                      transition: 'box-shadow 0.2s, border-color 0.2s',
+                    }}
+                    onFocus={e => {
+                      (e.currentTarget as HTMLElement).style.boxShadow = '0 0 0 4px var(--spectrum-global-color-blue-400), 0 4px 24px rgba(0,0,0,0.15)';
+                      (e.currentTarget as HTMLElement).style.borderColor = 'var(--spectrum-global-color-blue-400)';
+                    }}
+                    onBlur={e => {
+                      (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px rgba(0,0,0,0.15)';
+                      (e.currentTarget as HTMLElement).style.borderColor = '#000';
+                    }}
                   >
                     <Image
                       src={photoPlaceholders[0]}
@@ -221,8 +237,9 @@ export default function PortfolioPage() {
                         top: '50%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
-                        boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
-                        aspectRatio: '1/1'
+                        aspectRatio: '1/1',
+                        outline: 'none',
+                        borderRadius: 0,
                       }}
                     />
                   </View>
@@ -376,10 +393,14 @@ export default function PortfolioPage() {
                             href="https://github.com/sezer-muhammed/Anadolu-Ajans--Medya-Teknolojileri-hackathon"
                             target="_blank"
                             variant="secondary"
-                            UNSAFE_style={{ color: 'var(--spectrum-global-color-blue-900)', fontWeight: 600, fontSize: 16 }}
+                            UNSAFE_style={{ color: 'var(--spectrum-global-color-blue-900)', fontWeight: 600, fontSize: 16, outline: 'none', borderRadius: 4, transition: 'box-shadow 0.2s, background 0.2s' }}
+                            tabIndex={0}
+                            onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 3px var(--spectrum-global-color-blue-400)'; e.currentTarget.style.background = 'rgba(38, 132, 255, 0.08)'; }}
+                            onBlur={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'none'; }}
                           >
                             Anadolu Agency GenAI (GitHub)
                           </Link>
+                          <br />
                           <Text UNSAFE_className="text-gray-700" fontSize="size-200">
                             Award-winning GenAI project for Anadolu Agency
                           </Text>
@@ -411,7 +432,10 @@ export default function PortfolioPage() {
                             href="https://www.youtube.com/watch?v=Q2PWWyAS-D0"
                             target="_blank"
                             variant="secondary"
-                            UNSAFE_style={{ color: 'var(--spectrum-global-color-blue-900)', fontWeight: 600, fontSize: 16 }}
+                            UNSAFE_style={{ color: 'var(--spectrum-global-color-blue-900)', fontWeight: 600, fontSize: 16, outline: 'none', borderRadius: 4, transition: 'box-shadow 0.2s, background 0.2s' }}
+                            tabIndex={0}
+                            onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 3px var(--spectrum-global-color-blue-400)'; e.currentTarget.style.background = 'rgba(38, 132, 255, 0.08)'; }}
+                            onBlur={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'none'; }}
                           >
                             TRT Radyo1 Interview
                           </Link>
@@ -446,7 +470,10 @@ export default function PortfolioPage() {
                             href="https://www.youtube.com/watch?v=9j8DhSR_5V0"
                             target="_blank"
                             variant="secondary"
-                            UNSAFE_style={{ color: 'var(--spectrum-global-color-blue-900)', fontWeight: 600, fontSize: 16 }}
+                            UNSAFE_style={{ color: 'var(--spectrum-global-color-blue-900)', fontWeight: 600, fontSize: 16, outline: 'none', borderRadius: 4, transition: 'box-shadow 0.2s, background 0.2s' }}
+                            tabIndex={0}
+                            onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 3px var(--spectrum-global-color-blue-400)'; e.currentTarget.style.background = 'rgba(38, 132, 255, 0.08)'; }}
+                            onBlur={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'none'; }}
                           >
                             National TV Interview
                           </Link>
