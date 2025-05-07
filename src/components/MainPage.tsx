@@ -21,8 +21,13 @@ import {
   Badge
 } from '@adobe/react-spectrum';
 import { useNavigate } from 'react-router-dom';
-import photoPlaceholders from './photoPlaceholders.ts';
+
 import { ImagesGallery } from './imagesGallery.tsx';
+// Use dynamic base path for images (like imagesGallery.tsx)
+const basePath = process.env.PUBLIC_URL || '';
+const photoPlaceholders = [
+  `${basePath}/images/41-SZR03701.jpg`
+];
 
 
 /**
