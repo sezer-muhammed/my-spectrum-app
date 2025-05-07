@@ -492,24 +492,32 @@ export default function PortfolioPage() {
               Curriculum&nbsp;Vitae
             </Heading>
             <Divider marginY="size-200" />
-            <View
-              backgroundColor="gray-50"
-              borderRadius="medium"
-              height="80vh"
-              overflow="auto"
-              UNSAFE_style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.25)' }}
-            >
-              <iframe
-                src="/cv.pdf"
-                title="Muhammed Sezer CV"
-                style={{ width: '100%', height: '100%', border: 0 }}
-              />
-            </View>
-            <Flex justifyContent="center" marginTop="size-300">
-              <Button variant="primary" onPress={() => window.open('/cv.pdf', '_blank')}>
-                Download&nbsp;as&nbsp;PDF
-              </Button>
-            </Flex>
+            {/* Use dynamic base path for CV PDF */}
+            {(() => {
+              const basePath = process.env.PUBLIC_URL || '';
+              return (
+                <>
+                  <View
+                    backgroundColor="gray-50"
+                    borderRadius="medium"
+                    height="80vh"
+                    overflow="auto"
+                    UNSAFE_style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.25)' }}
+                  >
+                    <iframe
+                      src={`${basePath}/cv.pdf`}
+                      title="Muhammed Sezer CV"
+                      style={{ width: '100%', height: '100%', border: 0 }}
+                    />
+                  </View>
+                  <Flex justifyContent="center" marginTop="size-300">
+                    <Button variant="primary" onPress={() => window.open(`${basePath}/cv.pdf`, '_blank')}>
+                      Download&nbsp;as&nbsp;PDF
+                    </Button>
+                  </Flex>
+                </>
+              );
+            })()}
           </Item>
 
           {/* ───────── CONTACT ───────── */}
