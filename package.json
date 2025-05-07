@@ -2,6 +2,7 @@
   "name": "my-spectrum-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sezer-muhammed.github.io/my-spectrum-app",
   "dependencies": {
     "@adobe/react-spectrum": "^3.41.0",
     "@adobe/react-spectrum-charts": "^1.17.1",
@@ -14,11 +15,13 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^13.2.1",
+    "next": "^15.3.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.5.3",
     "react-scripts": "5.0.1",
     "react-vertical-timeline-component": "^3.5.3",
+    "serve": "^14.2.4",
     "vega": "^6.1.2",
     "vega-embed": "^7.0.2",
     "vega-lite": "^6.1.0",
@@ -28,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "typescript": "^5.8.3"
   }
 }
