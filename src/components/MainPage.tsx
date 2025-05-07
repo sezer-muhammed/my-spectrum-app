@@ -83,6 +83,34 @@ export default function PortfolioPage() {
         'Grew start‑up via strategic sales while nurturing a multidisciplinary team.',
       ],
     },
+    // --- New Experience Entries ---
+    {
+      title: 'Researcher – Middle East Technical University Robotics Center',
+      period: 'Sep 2021–Dec 2023 | Ankara, TR',
+      bullets: [
+        'Conducted research in swarm robotics, focusing on AI-driven collective behaviors and decision-making.',
+        'Simulated swarm behaviors in virtual environments to predict and optimize real-world performance.',
+        'Integrated computer vision techniques for navigation and object recognition in swarm systems.',
+      ],
+    },
+    {
+      title: 'Research Intern – TED University',
+      period: 'Summer 2022 | Ankara, TR',
+      bullets: [
+        'Conducted rehabilitation robotics research, focusing on human-machine interaction.',
+        'Developed and integrated hardware and software for rehabilitation robots.',
+        'Designed and implemented an AI model to simulate human behavior, enhancing test setup accuracy. Trained on past human actions.',
+        'Contributed to academic publications on AI-enhanced rehabilitation robotics.',
+      ],
+    },
+    {
+      title: 'Part-Time Engineer – TUBITAK',
+      period: 'Sep 2021–Sep 2022 | Gebze, TR',
+      bullets: [
+        'Developed image processing algorithms for license plate and ID card detection.',
+        'Implemented plate and tracking systems for real-time applications with 99+% accuracy.',
+      ],
+    },
   ];
 
   /**
@@ -314,25 +342,39 @@ export default function PortfolioPage() {
                         <Badge variant="info">Python</Badge>
                         <Badge variant="info">C/C++</Badge>
                         <Badge variant="info">JavaScript</Badge>
+                        <Badge variant="info">SQL</Badge>
+                        <Badge variant="info">HTML</Badge>
+                        <Badge variant="info">CSS</Badge>
+                        <Badge variant="info">Machine Learning</Badge>
+                        <Badge variant="info">Deep Learning</Badge>
+                        <Badge variant="info">NLP</Badge>
+                        <Badge variant="info">Computer Vision</Badge>
+                        <Badge variant="info">Data Analysis</Badge>
                         <Badge variant="info">PyTorch</Badge>
                         <Badge variant="info">TensorRT</Badge>
-                        <Badge variant="info">NLP</Badge>
-                        <Badge variant="info">CV</Badge>
+                        <Badge variant="info">Diffusers</Badge>
+                        <Badge variant="info">Transformers</Badge>
                         <Badge variant="info">ROS2</Badge>
-                        <Badge variant="info">MLOps</Badge>
+                        <Badge variant="info">Gazebo</Badge>
+                        <Badge variant="info">IsaacSim</Badge>
+                        <Badge variant="info">ArduPilot</Badge>
+                        <Badge variant="info">PX4</Badge>
                         <Badge variant="info">Django</Badge>
-                        <Badge variant="info">FastAPI</Badge>
+                        <Badge variant="info">LaTeX</Badge>
+                        <Badge variant="info">MATLAB</Badge>
+                        <Badge variant="info">Siemens NX</Badge>
+                        <Badge variant="info">Fusion 360</Badge>
                       </Flex>
                       <Divider marginY="size-100" />
                       <Heading level={5} UNSAFE_className="text-gray-900" marginBottom="size-50">
-                        🤝 Soft Skills
+                        🤝 Academic & Soft Skills
                       </Heading>
                       <Flex wrap gap="size-100">
-                        <Badge variant="positive">Leadership</Badge>
-                        <Badge variant="positive">Communication</Badge>
-                        <Badge variant="positive">Teamwork</Badge>
+                        <Badge variant="positive">Scientific Writing</Badge>
                         <Badge variant="positive">Public Speaking</Badge>
                         <Badge variant="positive">Teaching</Badge>
+                        <Badge variant="positive">Leadership</Badge>
+                        <Badge variant="positive">Communication</Badge>
                       </Flex>
                       <Divider marginY="size-200" /> {/* Added Divider */}
                       <Heading level={5} UNSAFE_className="text-gray-900" marginBottom="size-50"> 
@@ -374,9 +416,46 @@ export default function PortfolioPage() {
                   </Grid>
                   <Divider marginY="size-200" />
                   <Heading level={4} UNSAFE_className="text-gray-900" marginBottom="size-100">
-                    📚 Publications & Media
+                    📚 Media and Social Activities
                   </Heading>
                   <Grid columns={{ base: '1fr', S: '1fr 1fr', M: '1fr 1fr 1fr' }} gap="size-200" alignItems="stretch">
+                    <Well
+                      borderRadius="medium"
+                      padding="size-200"
+                      backgroundColor="gray-100"
+                      UNSAFE_style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)', minHeight: 80, display: 'flex', alignItems: 'center', gap: 12 }}
+                    >
+                      <Flex alignItems="center" gap="size-150">
+                        <View width="size-400" height="size-400" backgroundColor="static-black" borderRadius="medium" padding="size-50" UNSAFE_style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          {/* Simple icon for club/board activity */}
+                          <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" fill="#0057B8"/>
+                            <rect x="7" y="7" width="10" height="10" rx="2" fill="#fff"/>
+                            <text x="12" y="16" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#0057B8" fontFamily="Arial, Helvetica, sans-serif">METU</text>
+                          </svg>
+                        </View>
+                        <View>
+                          <Link
+                            href="https://www.youtube.com/watch?v=5r13-0wKpmU"
+                            target="_blank"
+                            variant="secondary"
+                            UNSAFE_style={{ color: 'var(--spectrum-global-color-blue-900)', fontWeight: 600, fontSize: 16, outline: 'none', borderRadius: 4, transition: 'box-shadow 0.2s, background 0.2s' }}
+                            tabIndex={0}
+                            onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 3px var(--spectrum-global-color-blue-400)'; e.currentTarget.style.background = 'rgba(38, 132, 255, 0.08)'; }}
+                            onBlur={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'none'; }}
+                          >
+                            Board Member, METU Machinery and Innovation Club
+                          </Link>
+                          <br />
+                          <Text UNSAFE_className="text-gray-700" fontSize="size-100" UNSAFE_style={{ display: 'block', marginTop: 2 }}>
+                            2018–2022: Organized and led 15+ university-wide AI training sessions
+                          </Text>
+                          <Text UNSAFE_className="text-gray-500" UNSAFE_style={{ fontSize: 11, lineHeight: 1.2, display: 'block', marginTop: 2 }}>
+                            <em>Student club activity, outreach & education</em>
+                          </Text>
+                        </View>
+                      </Flex>
+                    </Well>
                     <Well
                       borderRadius="medium"
                       padding="size-200"
@@ -437,7 +516,7 @@ export default function PortfolioPage() {
                             onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 3px var(--spectrum-global-color-blue-400)'; e.currentTarget.style.background = 'rgba(38, 132, 255, 0.08)'; }}
                             onBlur={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'none'; }}
                           >
-                            TRT Radyo1 Interview
+                            TRT Radyo1: National AI Radio Interview
                           </Link>
                           <br />
                           <Text UNSAFE_className="text-gray-700" fontSize="size-100" UNSAFE_style={{ display: 'block', marginTop: 2 }}>
@@ -475,7 +554,7 @@ export default function PortfolioPage() {
                             onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 3px var(--spectrum-global-color-blue-400)'; e.currentTarget.style.background = 'rgba(38, 132, 255, 0.08)'; }}
                             onBlur={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'none'; }}
                           >
-                            National TV Interview
+                            National TV: AI Expert Interview
                           </Link>
                           <br />
                           <Text UNSAFE_className="text-gray-700" fontSize="size-100" UNSAFE_style={{ display: 'block', marginTop: 2 }}>
