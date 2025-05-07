@@ -359,26 +359,108 @@ export default function PortfolioPage() {
                   <Heading level={4} UNSAFE_className="text-gray-900" marginBottom="size-100">
                     📚 Publications & Media
                   </Heading>
-                  <Flex wrap gap="size-200" alignItems="center">
-                    <Well backgroundColor="gray-100" borderRadius="medium" padding="size-200" UNSAFE_className="flex items-center gap-2">
-                      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#24292f" d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.45.11-3.02 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.57.23 2.73.11 3.02.74.8 1.19 1.83 1.19 3.09 0 4.43-2.7 5.41-5.27 5.7.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5Z"/></svg>
-                      <Link href="https://github.com/sezer-muhammed/Anadolu-Ajans--Medya-Teknolojileri-hackathon" target="_blank">
-                        Anadolu Agency GenAI (GitHub)
-                      </Link>
+                  <Grid columns={{ base: '1fr', S: '1fr 1fr', M: '1fr 1fr 1fr' }} gap="size-200" alignItems="stretch">
+                    <Well
+                      borderRadius="medium"
+                      padding="size-200"
+                      backgroundColor="gray-100"
+                      UNSAFE_style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)', minHeight: 80, display: 'flex', alignItems: 'center', gap: 12 }}
+                    >
+                      <Flex alignItems="center" gap="size-150">
+                        <View width="size-400" height="size-400" backgroundColor="static-black" borderRadius="medium" padding="size-50" UNSAFE_style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          {/* GitHub Mark (unchanged) */}
+                          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#24292f" d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.45.11-3.02 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.57.23 2.73.11 3.02.74.8 1.19 1.83 1.19 3.09 0 4.43-2.7 5.41-5.27 5.7.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5Z"/></svg>
+                        </View>
+                        <View>
+                          <Link
+                            href="https://github.com/sezer-muhammed/Anadolu-Ajans--Medya-Teknolojileri-hackathon"
+                            target="_blank"
+                            variant="secondary"
+                            UNSAFE_style={{ color: 'var(--spectrum-global-color-blue-900)', fontWeight: 600, fontSize: 16 }}
+                          >
+                            Anadolu Agency GenAI (GitHub)
+                          </Link>
+                          <Text UNSAFE_className="text-gray-700" fontSize="size-200">
+                            Award-winning GenAI project for Anadolu Agency
+                          </Text>
+                          <Text UNSAFE_className="text-gray-500" UNSAFE_style={{ fontSize: 11, lineHeight: 1.2, display: 'block', marginTop: 2 }}>
+                            <em>Open-source repo for a news-to-infographic GenAI system</em>
+                          </Text>
+                        </View>
+                      </Flex>
                     </Well>
-                    <Well backgroundColor="gray-100" borderRadius="medium" padding="size-200" UNSAFE_className="flex items-center gap-2">
-                      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1DA1F2"/><text x="12" y="16" textAnchor="middle" fontSize="10" fill="#fff">TRT</text></svg>
-                      <Link href="https://www.youtube.com/watch?v=Q2PWWyAS-D0" target="_blank">
-                        TRT Radyo1 Interview
-                      </Link>
+                    <Well
+                      borderRadius="medium"
+                      padding="size-200"
+                      backgroundColor="gray-100"
+                      UNSAFE_style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)', minHeight: 80, display: 'flex', alignItems: 'center', gap: 12 }}
+                    >
+                      <Flex alignItems="center" gap="size-150">
+                        <View width="size-400" height="size-400" backgroundColor="static-white" borderRadius="medium" padding="size-50" UNSAFE_style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          {/* Original TRT logo SVG (red background, white text) */}
+                          <svg width="28" height="28" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="512" height="512" rx="120" fill="#E30613"/>
+                            <g>
+                              <path d="M256 120c-75.1 0-136 60.9-136 136s60.9 136 136 136 136-60.9 136-136-60.9-136-136-136zm0 248c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z" fill="#fff"/>
+                              <text x="50%" y="57%" textAnchor="middle" fontSize="90" fontWeight="bold" fill="#fff" fontFamily="Arial, Helvetica, sans-serif" dominantBaseline="middle">TRT</text>
+                            </g>
+                          </svg>
+                        </View>
+                        <View>
+                          <Link
+                            href="https://www.youtube.com/watch?v=Q2PWWyAS-D0"
+                            target="_blank"
+                            variant="secondary"
+                            UNSAFE_style={{ color: 'var(--spectrum-global-color-blue-900)', fontWeight: 600, fontSize: 16 }}
+                          >
+                            TRT Radyo1 Interview
+                          </Link>
+                          <br />
+                          <Text UNSAFE_className="text-gray-700" fontSize="size-100" UNSAFE_style={{ display: 'block', marginTop: 2 }}>
+                            Radio interview on national AI trends
+                          </Text>
+                          <Text UNSAFE_className="text-gray-500" UNSAFE_style={{ fontSize: 11, lineHeight: 1.2, display: 'block', marginTop: 2 }}>
+                            <em>Featured on TRT Radyo1, Turkey's national broadcaster</em>
+                          </Text>
+                        </View>
+                      </Flex>
                     </Well>
-                    <Well backgroundColor="gray-100" borderRadius="medium" padding="size-200" UNSAFE_className="flex items-center gap-2">
-                      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" fill="#E53935" rx="2"/><polygon points="10,9 16,12 10,15" fill="#fff"/></svg>
-                      <Link href="https://www.youtube.com/watch?v=9j8DhSR_5V0" target="_blank">
-                        National TV Interview
-                      </Link>
+                    <Well
+                      borderRadius="medium"
+                      padding="size-200"
+                      backgroundColor="gray-100"
+                      UNSAFE_style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)', minHeight: 80, display: 'flex', alignItems: 'center', gap: 12 }}
+                    >
+                      <Flex alignItems="center" gap="size-150">
+                        <View width="size-400" height="size-400" backgroundColor="static-white" borderRadius="medium" padding="size-50" UNSAFE_style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          {/* Official YouTube logo SVG (red background, white play button) */}
+                          <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="12" fill="#FF0000"/>
+                            <path d="M34.5 24.1c0-1.2-.1-2.4-.2-3.6-.2-1.5-1.2-2.6-2.7-2.8C29.1 17.2 24 17.2 24 17.2s-5.1 0-7.6.5c-1.5.2-2.5 1.3-2.7 2.8-.1 1.2-.2 2.4-.2 3.6s.1 2.4.2 3.6c.2 1.5 1.2 2.6 2.7 2.8 2.5.5 7.6.5 7.6.5s5.1 0 7.6-.5c1.5-.2 2.5-1.3 2.7-2.8.1-1.2.2-2.4.2-3.6z" fill="#fff"/>
+                            <polygon points="21,29 29,24 21,19" fill="#FF0000"/>
+                            <polygon points="21,29 29,24 21,19" fill="#fff"/>
+                          </svg>
+                        </View>
+                        <View>
+                          <Link
+                            href="https://www.youtube.com/watch?v=9j8DhSR_5V0"
+                            target="_blank"
+                            variant="secondary"
+                            UNSAFE_style={{ color: 'var(--spectrum-global-color-blue-900)', fontWeight: 600, fontSize: 16 }}
+                          >
+                            National TV Interview
+                          </Link>
+                          <br />
+                          <Text UNSAFE_className="text-gray-700" fontSize="size-100" UNSAFE_style={{ display: 'block', marginTop: 2 }}>
+                            Featured on national television for AI work
+                          </Text>
+                          <Text UNSAFE_className="text-gray-500" UNSAFE_style={{ fontSize: 11, lineHeight: 1.2, display: 'block', marginTop: 2 }}>
+                            <em>Watch the full segment on YouTube</em>
+                          </Text>
+                        </View>
+                      </Flex>
                     </Well>
-                  </Flex>
+                  </Grid>
                   {/* Example for future: <Accordion> for references/testimonials */}
                 </Flex>
               </Flex>
