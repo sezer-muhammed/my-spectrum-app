@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/my-spectrum-app/static/css/main.67cefb92.css",
-    "main.js": "/my-spectrum-app/static/js/main.a46c054f.js",
+    "main.js": "/my-spectrum-app/static/js/main.f78f7081.js",
     "static/js/453.1ec63bc4.chunk.js": "/my-spectrum-app/static/js/453.1ec63bc4.chunk.js",
     "index.html": "/my-spectrum-app/index.html",
     "main.67cefb92.css.map": "/my-spectrum-app/static/css/main.67cefb92.css.map",
-    "main.a46c054f.js.map": "/my-spectrum-app/static/js/main.a46c054f.js.map",
+    "main.f78f7081.js.map": "/my-spectrum-app/static/js/main.f78f7081.js.map",
     "453.1ec63bc4.chunk.js.map": "/my-spectrum-app/static/js/453.1ec63bc4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.67cefb92.css",
-    "static/js/main.a46c054f.js"
+    "static/js/main.f78f7081.js"
   ]
 }
