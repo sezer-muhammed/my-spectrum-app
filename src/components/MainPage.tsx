@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Flex,
   View,
@@ -21,8 +21,37 @@ import {
   Badge
 } from '@adobe/react-spectrum';
 import { useNavigate } from 'react-router-dom';
-
 import { ImagesGallery } from './imagesGallery.tsx';
+
+// GitHub user info card for Contact tab
+const GitHubUserCard: React.FC = () => {
+  const [data, setData] = useState<any>(null);
+  useEffect(() => {
+    fetch('https://api.github.com/users/sezer-muhammed')
+      .then(r => r.json())
+      .then(setData);
+  }, []);
+  if (!data) return <Text>Loading GitHub info…</Text>;
+  return (
+    <View backgroundColor="gray-75" borderRadius="medium" padding="size-200" marginBottom="size-200" UNSAFE_style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)', maxWidth: 400, margin: '0 auto' }}>
+      <Flex direction="column" alignItems="center" gap="size-150">
+        <img src={data.avatar_url} alt="GitHub avatar" style={{ width: 108, height: 108, borderRadius: '50%', border: '2.5px solid #222', marginBottom: 12 }} />
+        <Heading level={4} UNSAFE_className="text-gray-900" marginBottom="size-50">
+          <a href={data.html_url} target="_blank" rel="noopener noreferrer" style={{ color: '#0057B8', textDecoration: 'none' }}>{data.name || data.login}</a>
+        </Heading>
+        <Text UNSAFE_className="text-gray-800" marginBottom="size-50">{data.bio}</Text>
+        <Flex gap="size-300" alignItems="center" marginBottom="size-50">
+          <Text UNSAFE_className="text-gray-900" UNSAFE_style={{ fontSize: 16, fontWeight: 500 }}><b>{data.followers}</b> Followers</Text>
+          <Divider orientation="vertical" size="L" />
+          <Text UNSAFE_className="text-gray-900" UNSAFE_style={{ fontSize: 16, fontWeight: 500 }}><b>{data.following}</b> Following</Text>
+        </Flex>
+        <Button variant="primary" onPress={() => window.open(data.html_url, '_blank')}>
+          View GitHub Profile
+        </Button>
+      </Flex>
+    </View>
+  );
+};
 // Use dynamic base path for images (like imagesGallery.tsx)
 const basePath = process.env.PUBLIC_URL || '';
 const photoPlaceholders = [
@@ -755,29 +784,8 @@ export default function PortfolioPage() {
                   gap="size-200"
                   UNSAFE_className="space-y-200"
                 >
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                  </svg>
                   <Heading level={3} UNSAFE_className="text-gray-900" marginTop="size-200">GitHub</Heading>
-                  <Text UNSAFE_className="text-gray-800 text-center" marginBottom="size-200">
-                    Open source projects and code contributions
-                  </Text>
-                  <Meter
-                    value={75}
-                    variant="positive"
-                    label="Contribution Activity"
-                    marginTop="size-200"
-                    marginBottom="size-200"
-                    width="80%"
-                  />
-                  <Button
-                    variant="primary"
-                    UNSAFE_className="bg-blue-700 text-white font-semibold"
-                    onPress={() => window.open('https://github.com/sezer-muhammed', '_blank')}
-                    marginTop="size-200"
-                  >
-                    Visit Profile
-                  </Button>
+                  <GitHubUserCard />
                 </Flex>
               </View>
               <View
