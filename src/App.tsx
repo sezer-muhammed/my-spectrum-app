@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <Provider theme={defaultTheme}>
-      <BrowserRouter>
+      <BrowserRouter basename="/my-spectrum-app">
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/library" element={<LibraryPage />} />
