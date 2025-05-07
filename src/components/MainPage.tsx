@@ -37,7 +37,7 @@ function getRandomImages(arr: string[], n: number) {
  */
 export default function PortfolioPage() {
   const navigate = useNavigate();
-  const [selectedTab, setSelectedTab] = useState<'about' | 'experience' | 'projects' | 'photography' | 'contact'>('about');
+  const [selectedTab, setSelectedTab] = useState<'about' | 'experience' | 'projects' | 'photography' | 'cv' | 'contact'>('about');
   const randomPhotos = getRandomImages(photoPlaceholders, 6);
 
   /* ───────── EXPERIENCE / PROJECT DATA ───────── */
@@ -159,8 +159,8 @@ export default function PortfolioPage() {
           <Button variant="cta" staticColor="white" onPress={() => navigate('/contact')}>
             Hire Me
           </Button>
-          <ActionButton isQuiet staticColor="white" aria-label="Download CV" onPress={() => navigate('/cv.pdf')}>
-            Download CV
+          <ActionButton isQuiet staticColor="white" aria-label="View CV" onPress={() => setSelectedTab('cv')}>
+            View CV
           </ActionButton>
         </Flex>
       </View>
@@ -186,6 +186,7 @@ export default function PortfolioPage() {
           <Item key="experience">Experience</Item>
           <Item key="projects">Projects</Item>
           <Item key="photography">Photography</Item>
+          <Item key="cv">CV</Item>
           <Item key="contact">Contact</Item>
         </TabList>
 
@@ -483,6 +484,32 @@ export default function PortfolioPage() {
             {/* Embed the full gallery here */}
             <ImagesGallery />
             {/* Removed "See Full Library" button */}
+          </Item>
+
+          {/* ───────── CV ───────── */}
+          <Item key="cv">
+            <Heading level={2} UNSAFE_className="text-white">
+              Curriculum&nbsp;Vitae
+            </Heading>
+            <Divider marginY="size-200" />
+            <View
+              backgroundColor="gray-50"
+              borderRadius="medium"
+              height="80vh"
+              overflow="auto"
+              UNSAFE_style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.25)' }}
+            >
+              <iframe
+                src="/cv.pdf"
+                title="Muhammed Sezer CV"
+                style={{ width: '100%', height: '100%', border: 0 }}
+              />
+            </View>
+            <Flex justifyContent="center" marginTop="size-300">
+              <Button variant="primary" onPress={() => window.open('/cv.pdf', '_blank')}>
+                Download&nbsp;as&nbsp;PDF
+              </Button>
+            </Flex>
           </Item>
 
           {/* ───────── CONTACT ───────── */}
