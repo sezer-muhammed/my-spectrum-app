@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Provider, defaultTheme, Flex, View
+    defaultTheme, Flex, View
 } from '@adobe/react-spectrum';
 
 // Use dynamic base path for images
@@ -105,7 +105,7 @@ export function ImagesGallery() {
     };
 
     return (
-        <Provider theme={defaultTheme} colorScheme="light">
+        <>
             <div style={{ margin: '24px 0' }}>
                 <Flex direction="column" gap="size-400" margin="size-400">
                     <View UNSAFE_className="masonry-gallery">
@@ -124,13 +124,13 @@ export function ImagesGallery() {
                     {modalImg && (
                         <div
                             className={`modal-overlay${isClosing ? ' fade-out' : ''}`}
-                            onClick={() => handleImageClick(modalImg)}
+                            onClick={() => handleImageClick(modalImg!)}
                             style={{ pointerEvents: isClosing ? 'none' : 'auto' }}
                         >
                             <div className="modal-content-layout-horizontal" onClick={e => e.stopPropagation()}>
-                                <div className="modal-img-container">
+                                <div className="modal-img-container" onClick={() => handleImageClick(modalImg!)}>
                                     <img
-                                        src={modalImg}
+                                        src={modalImg!}
                                         alt="Large preview"
                                         className="modal-img"
                                     />
@@ -282,6 +282,6 @@ export function ImagesGallery() {
                 }
                 `}
             </style>
-        </Provider>
+        </>
     );
 }
