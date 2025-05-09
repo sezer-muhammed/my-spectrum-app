@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import {
     Flex, View, ActionButton
 } from '@adobe/react-spectrum';
@@ -77,74 +77,69 @@ const photoCaptions: Record<string, string> = {
 
 
 export function ImagesGallery() {
-    // Modal state for image preview
-    const [modalImg, setModalImg] = React.useState<string | null>(null);
-    const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(-1);
-    const [isClosing, setIsClosing] = React.useState(false);
-    const sortedPhotos = React.useMemo(() => [...photoPlaceholders].sort(), []);
-    const closeTimeout = React.useRef<NodeJS.Timeout | null>(null);
+    const [modalImg, setModalImg] = useState<string | null>(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isClosing, setIsClosing] = useState(false);
+    const sortedPhotos = useMemo(() => [...photoPlaceholders].sort(), []);
+    const closeTimeout = useRef<NodeJS.Timeout | null>(null);
 
-    // Handle fade-out animation
-    React.useEffect(() => {
-        if (!modalImg) setIsClosing(false);
-    }, [modalImg]);
+    const openModal = (src: string, index: number) => {
+        setModalImg(src);
+        setCurrentIndex(index);
+        setIsClosing(false);
+        if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    };
 
-    // Clean up timeout if component unmounts or modal closes early
-    React.useEffect(() => {
-        return () => {
-            if (closeTimeout.current) clearTimeout(closeTimeout.current);
-        };
+    const closeModal = useCallback(() => {
+        setIsClosing(true);
+        closeTimeout.current = setTimeout(() => {
+            setModalImg(null);
+            setIsClosing(false); // Reset for next open
+        }, 200); // Corresponds to fade-out animation duration
     }, []);
 
-    // Helper to handle image/modal click
-    const handleImageClick = (src: string, index?: number) => {
-        if (modalImg === src) {
-            setIsClosing(true);
-            closeTimeout.current = setTimeout(() => {
-                setModalImg(null);
-                setCurrentImageIndex(-1);
-            }, 200);
-        } else {
-            setModalImg(src);
-            setCurrentImageIndex(index !== undefined ? index : sortedPhotos.indexOf(src));
-            setIsClosing(false);
-        }
-    };
-
-    const showNextImage = () => {
-        if (sortedPhotos.length === 0) return;
-        const nextIndex = (currentImageIndex + 1) % sortedPhotos.length;
-        setCurrentImageIndex(nextIndex);
+    const goToNext = useCallback(() => {
+        if (!sortedPhotos.length || isClosing) return; // Added isClosing check
+        const nextIndex = (currentIndex + 1) % sortedPhotos.length;
         setModalImg(sortedPhotos[nextIndex]);
-    };
+        setCurrentIndex(nextIndex);
+    }, [currentIndex, sortedPhotos, isClosing]); // Added isClosing to dependencies
 
-    const showPrevImage = () => {
-        if (sortedPhotos.length === 0) return;
-        const prevIndex = (currentImageIndex - 1 + sortedPhotos.length) % sortedPhotos.length;
-        setCurrentImageIndex(prevIndex);
+    const goToPrevious = useCallback(() => {
+        if (!sortedPhotos.length || isClosing) return; // Added isClosing check
+        const prevIndex = (currentIndex - 1 + sortedPhotos.length) % sortedPhotos.length;
         setModalImg(sortedPhotos[prevIndex]);
-    };
+        setCurrentIndex(prevIndex);
+    }, [currentIndex, sortedPhotos, isClosing]); // Added isClosing to dependencies
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (!modalImg) return;
+            if (!modalImg || isClosing) return;
             if (event.key === 'ArrowRight') {
-                showNextImage();
+                goToNext();
             }
             if (event.key === 'ArrowLeft') {
-                showPrevImage();
+                goToPrevious();
             }
             if (event.key === 'Escape') {
-                handleImageClick(modalImg); 
+                closeModal();
             }
         };
 
         window.addEventListener('keydown', handleKeyDown);
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
+            if (closeTimeout.current) clearTimeout(closeTimeout.current);
         };
-    }, [modalImg, currentImageIndex, sortedPhotos]);
+    }, [modalImg, isClosing, goToNext, goToPrevious, closeModal]);
 
+    // Click handler for the overlay itself
+    const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        // Close only if the click is directly on the overlay, not its children
+        if (e.target === e.currentTarget) {
+            closeModal();
+        }
+    };
 
     return (
         <>
@@ -157,7 +152,7 @@ export function ImagesGallery() {
                                     src={src}
                                     alt={photoCaptions[src] ? photoCaptions[src] : `Photo ${index + 1}`}
                                     className="masonry-photo"
-                                    onClick={() => handleImageClick(src, index)}
+                                    onClick={() => openModal(src, index)}
                                     style={{ cursor: 'pointer' }}
                                 />
                             </figure>
@@ -166,29 +161,21 @@ export function ImagesGallery() {
                     {modalImg && (
                         <div
                             className={`modal-overlay${isClosing ? ' fade-out' : ''}`}
-                            onClick={() => handleImageClick(modalImg!)}
+                            onClick={handleOverlayClick} 
                             style={{ pointerEvents: isClosing ? 'none' : 'auto' }}
                         >
                             <ActionButton
-                                onPress={showPrevImage}
-                                isQuiet
-                                UNSAFE_style={{
-                                    position: 'absolute',
-                                    left: '20px',
-                                    top: '50%',
-                                    transform: 'translateY(-50%)',
-                                    zIndex: 1002,
-                                    color: 'white',
-                                    backgroundColor: 'rgba(0,0,0,0.3)'
-                                }}
+                                onPress={goToPrevious}
+                                UNSAFE_className="modal-nav-button prev"
                                 aria-label="Previous image"
+                                isQuiet
                             >
-                                <ChevronLeft size="L" />
+                                <ChevronLeft size="XXL" />
                             </ActionButton>
-                            <div className="modal-content-layout-horizontal" onClick={e => e.stopPropagation()}>
-                                <div className="modal-img-container" onClick={() => handleImageClick(modalImg!)}>
+                            <div className="modal-content-layout-horizontal" /* onClick removed to allow overlay click to handle closing */ >
+                                <div className="modal-img-container" onClick={closeModal}>
                                     <img
-                                        src={modalImg!}
+                                        src={modalImg}
                                         alt="Large preview"
                                         className="modal-img"
                                     />
@@ -211,21 +198,13 @@ export function ImagesGallery() {
                                     </div>
                                 )}
                             </div>
-                             <ActionButton
-                                onPress={showNextImage}
-                                isQuiet
-                                UNSAFE_style={{
-                                    position: 'absolute',
-                                    right: '20px',
-                                    top: '50%',
-                                    transform: 'translateY(-50%)',
-                                    zIndex: 1002,
-                                    color: 'white',
-                                    backgroundColor: 'rgba(0,0,0,0.3)'
-                                }}
+                            <ActionButton
+                                onPress={goToNext}
+                                UNSAFE_className="modal-nav-button next"
                                 aria-label="Next image"
+                                isQuiet
                             >
-                                <ChevronRight size="L" />
+                                <ChevronRight size="XXL" />
                             </ActionButton>
                         </div>
                     )}
@@ -285,7 +264,7 @@ export function ImagesGallery() {
                 .modal-overlay {
                     position: fixed;
                     top: 0; left: 0; right: 0; bottom: 0;
-                    background: rgba(0,0,0,0.85);
+                    background: rgba(0,0,0,0.92); /* Darkened background */
                     z-index: 1000;
                     display: flex;
                     align-items: center;
@@ -314,19 +293,48 @@ export function ImagesGallery() {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    max-width: 60vw;
-                    max-height: 70vh;
+                    flex: 1; /* Allow it to take available width */
+                    min-width: 0; /* Important for flex shrinking */
                     margin-bottom: 0;
+                    overflow: hidden; /* Add overflow hidden to clip if necessary */
                 }
                 .modal-img {
-                    max-width: 60vw;
-                    max-height: 60vh;
-                    border-radius: 24px;
-                    border: 4px solid #000;
-                    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-                    background: #222;
+                    display: block; /* Ensure image is block-level */
+                    max-width: 100%; /* Fill container width */
+                    max-height: 80vh; /* Directly constrain image height to 80% of viewport */
+                    object-fit: contain; /* Ensures image scales to fit without cropping */
+                    border-radius: 12px; /* Slightly smaller radius */
+                    border: 2px solid #111; /* Darker border */
+                    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+                    background: #1c1c1e; /* Darker background for image if it's transparent */
                     animation: popIn 0.2s;
+                    cursor: pointer; 
                 }
+                .modal-nav-button {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background-color: rgba(0, 0, 0, 0.7) !important; /* Darker background */
+                    border-radius: 50% !important;
+                    color: white !important;
+                    /* padding: var(--spectrum-global-dimension-size-150) !important; /* Removed explicit padding */
+                    height: var(--spectrum-global-dimension-size-1000) !important; /* Larger button */
+                    width: var(--spectrum-global-dimension-size-1000) !important; /* Larger button */
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1001; /* Above image but below potential caption overlay */
+                }
+                .modal-nav-button.prev {
+                    left: 2vw; /* Closer to image */
+                }
+                .modal-nav-button.next {
+                    right: 2vw; /* Closer to image */
+                }
+                .modal-nav-button:hover {
+                    background-color: rgba(0, 0, 0, 0.9) !important; /* Darker hover */
+                }
+
                 @media (max-width: 900px) {
                     .modal-content-layout-horizontal {
                         flex-direction: column;
@@ -334,12 +342,22 @@ export function ImagesGallery() {
                     }
                     .modal-img-container {
                         max-width: 95vw;
-                        max-height: 40vh;
                         margin-bottom: 12px;
                     }
                     .modal-img {
-                        max-width: 95vw;
-                        max-height: 40vh;
+                        /* max-width: 95vw; /* Redundant */
+                        max-height: 65vh; /* Directly constrain image height for mobile */
+                    }
+                    .modal-nav-button {
+                        height: var(--spectrum-global-dimension-size-700) !important; /* Adjusted for mobile */
+                        width: var(--spectrum-global-dimension-size-700) !important; /* Adjusted for mobile */
+                        /* padding: var(--spectrum-global-dimension-size-100) !important; /* Keep or adjust if needed for smaller buttons */
+                    }
+                    .modal-nav-button.prev {
+                        left: 1vw;
+                    }
+                    .modal-nav-button.next {
+                        right: 1vw;
                     }
                 }
                 @keyframes fadeInBg {
