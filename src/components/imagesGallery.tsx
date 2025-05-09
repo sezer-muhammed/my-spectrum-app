@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
-    defaultTheme, Flex, View
+    Flex, View, ActionButton
 } from '@adobe/react-spectrum';
+import ChevronLeft from '@spectrum-icons/workflow/ChevronLeft';
+import ChevronRight from '@spectrum-icons/workflow/ChevronRight';
 
 // Use dynamic base path for images
 const basePath = process.env.PUBLIC_URL || '';
@@ -77,6 +79,7 @@ const photoCaptions: Record<string, string> = {
 export function ImagesGallery() {
     // Modal state for image preview
     const [modalImg, setModalImg] = React.useState<string | null>(null);
+    const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(-1);
     const [isClosing, setIsClosing] = React.useState(false);
     const sortedPhotos = React.useMemo(() => [...photoPlaceholders].sort(), []);
     const closeTimeout = React.useRef<NodeJS.Timeout | null>(null);
@@ -94,15 +97,54 @@ export function ImagesGallery() {
     }, []);
 
     // Helper to handle image/modal click
-    const handleImageClick = (src: string) => {
+    const handleImageClick = (src: string, index?: number) => {
         if (modalImg === src) {
             setIsClosing(true);
-            closeTimeout.current = setTimeout(() => setModalImg(null), 200);
+            closeTimeout.current = setTimeout(() => {
+                setModalImg(null);
+                setCurrentImageIndex(-1);
+            }, 200);
         } else {
             setModalImg(src);
+            setCurrentImageIndex(index !== undefined ? index : sortedPhotos.indexOf(src));
             setIsClosing(false);
         }
     };
+
+    const showNextImage = () => {
+        if (sortedPhotos.length === 0) return;
+        const nextIndex = (currentImageIndex + 1) % sortedPhotos.length;
+        setCurrentImageIndex(nextIndex);
+        setModalImg(sortedPhotos[nextIndex]);
+    };
+
+    const showPrevImage = () => {
+        if (sortedPhotos.length === 0) return;
+        const prevIndex = (currentImageIndex - 1 + sortedPhotos.length) % sortedPhotos.length;
+        setCurrentImageIndex(prevIndex);
+        setModalImg(sortedPhotos[prevIndex]);
+    };
+
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (!modalImg) return;
+            if (event.key === 'ArrowRight') {
+                showNextImage();
+            }
+            if (event.key === 'ArrowLeft') {
+                showPrevImage();
+            }
+            if (event.key === 'Escape') {
+                handleImageClick(modalImg); 
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [modalImg, currentImageIndex, sortedPhotos]);
+
 
     return (
         <>
@@ -115,7 +157,7 @@ export function ImagesGallery() {
                                     src={src}
                                     alt={photoCaptions[src] ? photoCaptions[src] : `Photo ${index + 1}`}
                                     className="masonry-photo"
-                                    onClick={() => handleImageClick(src)}
+                                    onClick={() => handleImageClick(src, index)}
                                     style={{ cursor: 'pointer' }}
                                 />
                             </figure>
@@ -127,6 +169,22 @@ export function ImagesGallery() {
                             onClick={() => handleImageClick(modalImg!)}
                             style={{ pointerEvents: isClosing ? 'none' : 'auto' }}
                         >
+                            <ActionButton
+                                onPress={showPrevImage}
+                                isQuiet
+                                UNSAFE_style={{
+                                    position: 'absolute',
+                                    left: '20px',
+                                    top: '50%',
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 1002,
+                                    color: 'white',
+                                    backgroundColor: 'rgba(0,0,0,0.3)'
+                                }}
+                                aria-label="Previous image"
+                            >
+                                <ChevronLeft size="L" />
+                            </ActionButton>
                             <div className="modal-content-layout-horizontal" onClick={e => e.stopPropagation()}>
                                 <div className="modal-img-container" onClick={() => handleImageClick(modalImg!)}>
                                     <img
@@ -149,10 +207,26 @@ export function ImagesGallery() {
                                             minWidth: "220px"
                                         }}
                                     >
-                                        {photoCaptions[modalImg]}
+                                        {photoCaptions[modalImg!]}
                                     </div>
                                 )}
                             </div>
+                             <ActionButton
+                                onPress={showNextImage}
+                                isQuiet
+                                UNSAFE_style={{
+                                    position: 'absolute',
+                                    right: '20px',
+                                    top: '50%',
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 1002,
+                                    color: 'white',
+                                    backgroundColor: 'rgba(0,0,0,0.3)'
+                                }}
+                                aria-label="Next image"
+                            >
+                                <ChevronRight size="L" />
+                            </ActionButton>
                         </div>
                     )}
                 </Flex>
