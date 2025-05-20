@@ -7,15 +7,15 @@
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.4.2.tgz#c836b1bd81e6d62cd6cdf3ee4948bcdce8ea79c8"
   integrity sha512-baYZExFpsdkBNuvGKTKWCwKH57HRZLVtycZS05WTQNVOiXVSeAki3nU35zlRbToeMW8aHlJfyS+1C4BOv27q0A==
 
-"@adobe/react-spectrum-charts@^1.17.1":
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/@adobe/react-spectrum-charts/-/react-spectrum-charts-1.17.1.tgz#80b6b74dd338c6050af2003cebc47efa407fad03"
-  integrity sha512-UpGc+1RwDqfSxnQu1Q60mUxetCZx+FGrP4Lv8CLh9Y+SMUwe3f3hF6Zs/4OHK2mULl4Hx73p7xEcBh4lLt9gpg==
+"@adobe/react-spectrum-charts@^1.17.3":
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/@adobe/react-spectrum-charts/-/react-spectrum-charts-1.17.3.tgz#0fddca2cd3ed873704c4b0abbaefb03c5b0844c6"
+  integrity sha512-bAPbVTZSwb7YUnnX8nAOpLY7TLyxdA318uMHcZB/WbfKpn4nsNHOKEuFX77W+v5GChPNdIU7ZutwTZwxbFopqQ==
   dependencies:
-    "@spectrum-charts/constants" "1.17.1"
-    "@spectrum-charts/themes" "1.17.1"
-    "@spectrum-charts/utils" "1.17.1"
-    "@spectrum-charts/vega-spec-builder" "1.17.1"
+    "@spectrum-charts/constants" "1.17.3"
+    "@spectrum-charts/themes" "1.17.3"
+    "@spectrum-charts/utils" "1.17.3"
+    "@spectrum-charts/vega-spec-builder" "1.17.3"
     d3-format "^3.1.0"
     deepmerge ">= 4.0.0"
     immer ">= 9.0.0"
@@ -1712,11 +1712,6 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.2.0.tgz#2cbcf822bf3764c9658c4d2e568bd0c0cb748016"
   integrity sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==
 
-"@emailjs/browser@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@emailjs/browser/-/browser-4.4.1.tgz#ad5684af5a912c0ab415202184845eb3270c4c81"
-  integrity sha512-DGSlP9sPvyFba3to2A50kDtZ+pXVp/0rhmqs2LmbMS3I5J8FSOgLwzY2Xb4qfKlOVHh29EAutLYwe5yuEZmEFg==
-
 "@emnapi/runtime@^1.4.0":
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/@emnapi/runtime/-/runtime-1.4.3.tgz#c0564665c80dc81c448adac23f9dfbed6c838f7d"
@@ -1796,22 +1791,6 @@
   integrity sha512-ePEgLgVCqi2BBFnTMWPfIghu6FkbZnnBVhO2sSxvLfrdFw7wCHAHiDoM2h4NRgjbaY7+B7HgOLZGkK187pZTZg==
   dependencies:
     tslib "^2.8.0"
-
-"@formspree/core@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@formspree/core/-/core-4.0.0.tgz#3425bdcbcf8669c1540f66adc9158adcb075096d"
-  integrity sha512-geNlUut5nME1Ztej5Pzx1BrlQ1fFIcJYIqmF+Vm0jaUbpZxjXvt7SDOGeQVkuxn80QJiIHlwBGGjSBFjPX/KDw==
-  dependencies:
-    "@stripe/stripe-js" "^5.7.0"
-
-"@formspree/react@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@formspree/react/-/react-3.0.0.tgz#9d8cc5cb5c7ef18f0606dbc9415d8c3d21425467"
-  integrity sha512-8PufBZ4l13VmCp9xTGQXwyF6mZtYSecqgTlFuMo5Fbe4Q6zUk7PMU2uKOwIaytZyTyJgFVCvdbpQElPPBKYNLw==
-  dependencies:
-    "@formspree/core" "^4.0.0"
-    "@stripe/react-stripe-js" "^3.1.1"
-    "@stripe/stripe-js" "^5.7.0"
 
 "@humanwhocodes/config-array@^0.13.0":
   version "0.13.0"
@@ -4670,33 +4649,33 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@spectrum-charts/constants@1.17.1":
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-charts/constants/-/constants-1.17.1.tgz#307f89b94e13765aef734e0a9785eb5455d40900"
-  integrity sha512-yCB9gH4PZQQYpMJDTUUhKB6+5HiFG+gaCYpclzW8pjHxa0OxFfhFsdxZboWWPBKWThHamWpCdi5bKLhgNaIqcw==
+"@spectrum-charts/constants@1.17.3":
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/@spectrum-charts/constants/-/constants-1.17.3.tgz#b781c76b96898aaa85134ca904c98c48e748a1c9"
+  integrity sha512-1H/+5joNlefpq5Mj6lIZZWaOD7dReWs1mvza4Eot7Y8Jztw1G1c4uPm5KyIV+Goz4iwMcyjkQzRNk53HV7CCeg==
 
-"@spectrum-charts/themes@1.17.1":
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-charts/themes/-/themes-1.17.1.tgz#391f9811f49c70a7de6df8a5350aae40dd44b4ed"
-  integrity sha512-It+wd7yWSngtN6JhiCCnpcYs6OPwMJrAJN3C6/SkqjuR9HlC90PPmtwRZDict5JN4/Haj72enUNOFoqFDZQHww==
+"@spectrum-charts/themes@1.17.3":
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/@spectrum-charts/themes/-/themes-1.17.3.tgz#4b7ac9860db317f3c570dd1ffe33fbffcd0005ae"
+  integrity sha512-RtyxiOtXIUtb+2QnoULXXwf1iZew4LEYzqUz5hPubQSJlKYOZAmcVYc4ELwXgO4lHJQnZ+gq/BRLPneRClyLgg==
   dependencies:
-    "@spectrum-charts/constants" "1.17.1"
-    "@spectrum-charts/utils" "1.17.1"
+    "@spectrum-charts/constants" "1.17.3"
+    "@spectrum-charts/utils" "1.17.3"
     vega "^5.32.0"
 
-"@spectrum-charts/utils@1.17.1":
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-charts/utils/-/utils-1.17.1.tgz#f4a23f447ce33d41aff7054aaa947839789a0912"
-  integrity sha512-NgLrmc9at2afDnaIQZgmcxKQuLNUs+7g0Cpcnf9GAi4UNwOBR7IrCLOaPp/QnV7rANnghXXzX396dHEEsIhcdQ==
+"@spectrum-charts/utils@1.17.3":
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/@spectrum-charts/utils/-/utils-1.17.3.tgz#4dbceba5d1541e639468dc1428024c736905c341"
+  integrity sha512-lHO/M3BtiH5wnWfi1o2RiZ+WY0f9oD7xCpOWw+/bx5DbCanjZQsN0dMG+hGSDLJntfHK1kJeT7jdyOt8j5xrdw==
 
-"@spectrum-charts/vega-spec-builder@1.17.1":
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-charts/vega-spec-builder/-/vega-spec-builder-1.17.1.tgz#d7265d7af5a6ad11252f5db5035b5002b9c4b4f8"
-  integrity sha512-bg+hA/t9Ym1NO0e/jFMWWzKcXI9YaLoLp8jrCvGN8SeQ0LpQfPCeOhnm/SG6+akMPnt7+3WQZOtmS+nWT2ITuw==
+"@spectrum-charts/vega-spec-builder@1.17.3":
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/@spectrum-charts/vega-spec-builder/-/vega-spec-builder-1.17.3.tgz#49f53207610bf281cdf744aa8988e433ae814b32"
+  integrity sha512-HzBJF9xJqlL9xABg4EjO0oGh6eAXamwHyNChbYpeX/fbsSi8UWzWtLXyS5V2ZuI06xVW3dIlPYbkRMxUcQYpaA==
   dependencies:
-    "@spectrum-charts/constants" "1.17.1"
-    "@spectrum-charts/themes" "1.17.1"
-    "@spectrum-charts/utils" "1.17.1"
+    "@spectrum-charts/constants" "1.17.3"
+    "@spectrum-charts/themes" "1.17.3"
+    "@spectrum-charts/utils" "1.17.3"
     immer "^10.1.1"
     vega ">= 5.20.2"
 
@@ -4717,18 +4696,6 @@
     "@adobe/react-spectrum-workflow" "2.3.5"
     "@react-spectrum/icon" "^3.8.4"
     "@swc/helpers" "^0.5.0"
-
-"@stripe/react-stripe-js@^3.1.1":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@stripe/react-stripe-js/-/react-stripe-js-3.7.0.tgz#ebebf87718875be08c68b3412cab785d0e9064d6"
-  integrity sha512-PYls/2S9l0FF+2n0wHaEJsEU8x7CmBagiH7zYOsxbBlLIHEsqUIQ4MlIAbV9Zg6xwT8jlYdlRIyBTHmO3yM7kQ==
-  dependencies:
-    prop-types "^15.7.2"
-
-"@stripe/stripe-js@^5.7.0":
-  version "5.10.0"
-  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-5.10.0.tgz#4d1fcf8c59530865fcd59ce910798cc9c973a870"
-  integrity sha512-PTigkxMdMUP6B5ISS7jMqJAKhgrhZwjprDqR1eATtFfh0OpKVNp110xiH+goeVdrJ29/4LeZJR4FaHHWstsu0A==
 
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
   version "2.2.3"
@@ -4889,19 +4856,17 @@
     lodash "^4.17.21"
     redent "^3.0.0"
 
-"@testing-library/react@^16.1.0":
+"@testing-library/react@^16.3.0":
   version "16.3.0"
   resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-16.3.0.tgz#3a85bb9bdebf180cd76dba16454e242564d598a6"
   integrity sha512-kFSyxiEDwv1WLl2fgsq6pPBbw5aWKrsY2/noi1Id0TK0UParSF62oFQFGHXIyaG4pp2tEub/Zlel+fjjZILDsw==
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-"@testing-library/user-event@^13.2.1":
-  version "13.5.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.5.0.tgz#69d77007f1e124d55314a2b73fd204b333b13295"
-  integrity sha512-5Kwtbo3Y/NowpkbRuSepbyMFkZmHgD+vPzYB/RJ4oxt5Gj/avFFBYjhw27cqSVPVw/3a67NK1PbiIr9k4Gwmdg==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
+"@testing-library/user-event@^14.6.1":
+  version "14.6.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-14.6.1.tgz#13e09a32d7a8b7060fe38304788ebf4197cd2149"
+  integrity sha512-vq7fv0rnt+QTXgPxr5Hjc210p6YKq2kmdziLgnsZGgLJ9e6VAShx1pACLuRjd/AS/sr7phAR58OIIpf0LlmQNw==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -8483,13 +8448,6 @@ he@^1.2.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
-hoist-non-react-statics@^3.3.0:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
-  integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
-  dependencies:
-    react-is "^16.7.0"
-
 hoopy@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/hoopy/-/hoopy-0.1.4.tgz#609207d661100033a9a9402ad3dea677381c1b1d"
@@ -11278,7 +11236,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -11474,14 +11432,6 @@ react-aria@^3.39.0:
     "@react-aria/visually-hidden" "^3.8.22"
     "@react-types/shared" "^3.29.0"
 
-react-async-script@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-async-script/-/react-async-script-1.2.0.tgz#ab9412a26f0b83f5e2e00de1d2befc9400834b21"
-  integrity sha512-bCpkbm9JiAuMGhkqoAiC0lLkb40DJ0HOEJIku+9JDjxX3Rcs+ztEOG13wbrOskt3n2DTrjshhaQ/iay+SnGg5Q==
-  dependencies:
-    hoist-non-react-statics "^3.3.0"
-    prop-types "^15.5.0"
-
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"
@@ -11539,20 +11489,12 @@ react-github-calendar@^4.5.7:
     react-activity-calendar "^2.7.11"
     react-error-boundary "^6.0.0"
 
-react-google-recaptcha@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-google-recaptcha/-/react-google-recaptcha-3.1.0.tgz#44aaab834495d922b9d93d7d7a7fb2326315b4ab"
-  integrity sha512-cYW2/DWas8nEKZGD7SCu9BSuVz8iOcOLHChHyi7upUuVhkpkhYG/6N3KDiTQ3XAiZ2UAZkfvYKMfAHOzBOcGEg==
-  dependencies:
-    prop-types "^15.5.0"
-    react-async-script "^1.2.0"
-
 react-intersection-observer@^8.26.2:
   version "8.34.0"
   resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.34.0.tgz#6f6e67831c52e6233f6b6cc7eb55814820137c42"
   integrity sha512-TYKh52Zc0Uptp5/b4N91XydfSGKubEhgZRtcg1rhTKABXijc4Sdr1uTp5lJ8TN27jwUsdXxjHXtHa0kPj704sw==
 
-react-is@^16.13.1, react-is@^16.7.0:
+react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -11572,23 +11514,22 @@ react-refresh@^0.11.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-router-dom@^7.5.3:
-  version "7.5.3"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-7.5.3.tgz#496e9f6d90f731703c7772668b41747028e0a2d5"
-  integrity sha512-cK0jSaTyW4jV9SRKAItMIQfWZ/D6WEZafgHuuCb9g+SjhLolY78qc+De4w/Cz9ybjvLzShAmaIMEXt8iF1Cm+A==
+react-router-dom@^7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-7.6.0.tgz#eadcede43856dc714fa3572a946fd7502775c017"
+  integrity sha512-DYgm6RDEuKdopSyGOWZGtDfSm7Aofb8CCzgkliTjtu/eDuB0gcsv6qdFhhi8HdtmA+KHkt5MfZ5K2PdzjugYsA==
   dependencies:
-    react-router "7.5.3"
+    react-router "7.6.0"
 
-react-router@7.5.3:
-  version "7.5.3"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.5.3.tgz#9e5420832af8c3690740c1797d4fa54613fea06d"
-  integrity sha512-3iUDM4/fZCQ89SXlDa+Ph3MevBrozBAI655OAfWQlTm9nBR0IKlrmNwFow5lPHttbwvITZfkeeeZFP6zt3F7pw==
+react-router@7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.6.0.tgz#e2d0872d7bea8df79465a8bba9a20c87c32ce995"
+  integrity sha512-GGufuHIVCJDbnIAXP3P9Sxzq3UUsddG3rrI3ut1q6m0FI6vxVBF3JoPQ38+W/blslLH4a5Yutp8drkEpXoddGQ==
   dependencies:
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
-    turbo-stream "2.4.0"
 
-react-scripts@5.0.1:
+react-scripts@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-5.0.1.tgz#6285dbd65a8ba6e49ca8d651ce30645a6d980003"
   integrity sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==
@@ -13062,11 +13003,6 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-turbo-stream@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/turbo-stream/-/turbo-stream-2.4.0.tgz#1e4fca6725e90fa14ac4adb782f2d3759a5695f0"
-  integrity sha512-FHncC10WpBd2eOmGwpmQsWLDoK4cqsA/UT/GqNoaKOQnT8uzhtCbg3EoUDMvqpOSAI0S26mr0rkjzbOO6S3v1g==
-
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/type-check/-/type-check-0.4.0.tgz#07b8203bfa7056c0657050e3ccd2c37730bab8f1"
@@ -14056,10 +13992,10 @@ web-streams-polyfill@^3.0.3:
   resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.3.3.tgz#2073b91a2fdb1fbfbd401e7de0ac9f8214cecb4b"
   integrity sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==
 
-web-vitals@^2.1.0:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-2.1.4.tgz#76563175a475a5e835264d373704f9dde718290c"
-  integrity sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg==
+web-vitals@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-5.0.0.tgz#fa565a294f963cb1665847a122e91e02036ded01"
+  integrity sha512-yuayYLYyO4QdqB7YriMtUZxCIsUbcpZLnoPCJXocLvTRcAh/Jz2rgqsHrh9Oz/NHApB/Somd05NMsuhJV3YcLQ==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

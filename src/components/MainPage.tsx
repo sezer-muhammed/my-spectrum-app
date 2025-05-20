@@ -151,6 +151,7 @@ export default function PortfolioPage() {
     name: string;
     desc: string;
     url: string;
+    post?: string; // Optional post link
   }[] = [
     {
       name: 'Anadolu Agency GenAI',
@@ -165,7 +166,8 @@ export default function PortfolioPage() {
     {
       name: 'Eflatun AI',
       desc: 'Developed an AI model for vehicle and person recognition using bird\'s-eye view imagery. Achieved 1st place in TEKNOFEST 2022 Artificial Intelligence in Transportation Competition with an all-time record (Award: $6,500).',
-      url: 'https://www.linkedin.com/posts/sbdikkaya_yapayzeka-ai-teknofest2022-activity-6972554212916277249-WBOl',
+      url: 'https://www.youtube.com/embed/mGVSh-n4jQE',
+      post: 'https://www.linkedin.com/posts/sbdikkaya_yapayzeka-ai-teknofest2022-activity-6972554212916277249-WBOl',
     },
     {
       name: 'FENER Mobile Robot',
@@ -388,43 +390,38 @@ export default function PortfolioPage() {
                       <Heading level={4} UNSAFE_className="text-gray-900" marginBottom="size-100">
                         🛠️ Key Skills
                       </Heading>
+                      {/* AI & Data Skills */}
+                      <Text UNSAFE_className="text-blue-700 font-semibold" fontSize="size-200" marginBottom="size-50">AI & Data</Text>
                       <Flex wrap gap="size-100" marginBottom="size-200">
-                        <Badge variant="info">Python</Badge>
-                        <Badge variant="info">C/C++</Badge>
-                        <Badge variant="info">JavaScript</Badge>
-                        <Badge variant="info">SQL</Badge>
-                        <Badge variant="info">HTML</Badge>
-                        <Badge variant="info">CSS</Badge>
-                        <Badge variant="info">Machine Learning</Badge>
-                        <Badge variant="info">Deep Learning</Badge>
-                        <Badge variant="info">NLP</Badge>
-                        <Badge variant="info">Computer Vision</Badge>
-                        <Badge variant="info">Data Analysis</Badge>
-                        <Badge variant="info">PyTorch</Badge>
-                        <Badge variant="info">TensorRT</Badge>
-                        <Badge variant="info">Diffusers</Badge>
-                        <Badge variant="info">Transformers</Badge>
-                        <Badge variant="info">ROS2</Badge>
-                        <Badge variant="info">Gazebo</Badge>
-                        <Badge variant="info">IsaacSim</Badge>
-                        <Badge variant="info">ArduPilot</Badge>
-                        <Badge variant="info">PX4</Badge>
-                        <Badge variant="info">Django</Badge>
-                        <Badge variant="info">LaTeX</Badge>
-                        <Badge variant="info">MATLAB</Badge>
-                        <Badge variant="info">Siemens NX</Badge>
-                        <Badge variant="info">Fusion 360</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>Python</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>SQL</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>Machine Learning</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>Deep Learning</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>NLP</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>Computer Vision</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>Data Analysis</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>PyTorch</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>TensorRT</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>Diffusers</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#2563eb', color: '#fff' }}>Transformers</Badge>
                       </Flex>
-                      <Divider marginY="size-100" />
-                      <Heading level={5} UNSAFE_className="text-gray-900" marginBottom="size-50">
-                        🤝 Academic & Soft Skills
-                      </Heading>
-                      <Flex wrap gap="size-100">
-                        <Badge variant="positive">Scientific Writing</Badge>
-                        <Badge variant="positive">Public Speaking</Badge>
-                        <Badge variant="positive">Teaching</Badge>
-                        <Badge variant="positive">Leadership</Badge>
-                        <Badge variant="positive">Communication</Badge>
+                      {/* Other Stacks */}
+                      <Text UNSAFE_className="text-green-700 font-semibold" fontSize="size-200" marginBottom="size-50">Other Stacks</Text>
+                      <Flex wrap gap="size-100" marginBottom="size-200">
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>C/C++</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>JavaScript</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>HTML</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>CSS</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>ROS2</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>Gazebo</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>IsaacSim</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>ArduPilot</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>PX4</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>Django</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>LaTeX</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>MATLAB</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>Siemens NX</Badge>
+                        <Badge variant="info" UNSAFE_style={{ backgroundColor: '#059669', color: '#fff' }}>Fusion 360</Badge>
                       </Flex>
                       <Divider marginY="size-200" /> {/* Added Divider */}
                       <Heading level={5} UNSAFE_className="text-gray-900" marginBottom="size-50"> 
@@ -625,31 +622,38 @@ export default function PortfolioPage() {
 
           {/* ───────── EXPERIENCE ───────── */}
           <Item key="experience">
-            <Heading level={2} UNSAFE_className="text-white">Professional Experience</Heading>
-            <Divider marginY="size-200" />
-            <Grid columns={{ base: "1fr" }} gap="size-300" UNSAFE_className="mt-4">
-              {EXPERIENCE.map(({ title, period, bullets }) => (
-                <Well
-                  key={title}
-                  backgroundColor="gray-200" // Keep slightly darker background for visual separation
-                  borderRadius="medium"
-                  padding="size-300"
-                  marginBottom="size-200"
-                  UNSAFE_className="shadow-inner" // Removed space-y-100, handled by Flex gap
-                >
-                  <Heading level={4} UNSAFE_className="text-gray-900" marginBottom="size-100">{title}</Heading>
-                  <Text UNSAFE_className="text-sm text-gray-700" marginBottom="size-200">{period}</Text>
-                  {/* Replace ul with Flex */}
-                  <Flex direction="column" gap="size-150">
-                    {bullets.map((b) => (
-                      <Text key={b} UNSAFE_className="text-sm text-gray-800">
-                        • {b}
-                      </Text>
-                    ))}
-                  </Flex>
-                </Well>
-              ))}
-            </Grid>
+            <View borderRadius="large" padding="size-400" UNSAFE_style={{ background: '#f3f4f6', position: 'relative', overflow: 'hidden', minHeight: 500 }}>
+              <Heading level={2} UNSAFE_className="text-blue-900" UNSAFE_style={{ letterSpacing: 1, fontWeight: 700 }}>Professional Experience</Heading>
+              <Divider marginY="size-200" />
+              <Grid columns={{ base: '1fr', M: '2fr 1fr' }} gap="size-300" UNSAFE_className="mt-4">
+                {/* Experience List (Left) */}
+                <View>
+                  {EXPERIENCE.map(({ title, period, bullets }) => (
+                    <Well
+                      key={title}
+                      backgroundColor="static-white"
+                      borderRadius="medium"
+                      padding="size-300"
+                      marginBottom="size-200"
+                      UNSAFE_className="shadow-inner"
+                      UNSAFE_style={{ borderLeft: '6px solid #2563eb', boxShadow: '0 2px 12px 0 rgba(38,99,235,0.07)' }}
+                    >
+                      <Heading level={4} UNSAFE_className="text-blue-800" marginBottom="size-100">{title}</Heading>
+                      <Text UNSAFE_className="text-gray-600" marginBottom="size-200">{period}</Text>
+                      <Flex direction="column" gap="size-150">
+                        {bullets.map((b) => (
+                          <Text key={b} UNSAFE_className="text-gray-800 text-sm">• {b}</Text>
+                        ))}
+                      </Flex>
+                    </Well>
+                  ))}
+                </View>
+                {/* Decorative Right Side (No SVG, No Keywords) */}
+                <View position="relative" minHeight="100%" UNSAFE_style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {/* Intentionally left empty for clean look */}
+                </View>
+              </Grid>
+            </View>
           </Item>
 
           {/* ───────── PROJECTS ───────── */}
@@ -657,7 +661,7 @@ export default function PortfolioPage() {
             <Heading level={2} UNSAFE_className="text-white">Selected Projects</Heading>
             <Divider marginY="size-200" />
             <Grid columns={{ base: "1fr", M: "1fr 1fr" }} gap="size-200">
-              {PROJECTS.map(({ name, desc, url }) => (
+              {PROJECTS.map(({ name, desc, url, post }) => (
                 <Well
                   key={name}
                   marginBottom="size-200"
@@ -702,11 +706,9 @@ export default function PortfolioPage() {
                       />
                     </View>
                   ) : (
-                    // No extra view needed for non-YouTube links, description is already above.
-                    // Add some margin if needed before the button for non-YouTube cards
-                    <View marginY="size-100" /> // Placeholder for potential spacing adjustment
+                    <View marginY="size-100" />
                   )}
-                  {/* Action Button - marginTop="auto" pushes it down if flexGrow is on Content */}
+                  {/* Action Button(s) */}
                   <Flex gap="size-100" marginTop="auto">
                     <Button
                       variant="primary"
@@ -714,6 +716,15 @@ export default function PortfolioPage() {
                     >
                       {isYoutube(url) ? 'Watch on YouTube' : url.includes('github.com') ? 'View Repository' : 'Visit Link'}
                     </Button>
+                    {/* If project has a post, show a secondary button */}
+                    {'post' in PROJECTS.find(p => p.name === name) && PROJECTS.find(p => p.name === name)?.post ? (
+                      <Button
+                        variant="secondary"
+                        onPress={() => window.open(PROJECTS.find(p => p.name === name)?.post, '_blank')}
+                      >
+                        View LinkedIn Post
+                      </Button>
+                    ) : null}
                   </Flex>
                 </Well>
               ))}
